@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.spring.dto.Skills;
+import com.spring.exception.SkillNotFoundException;
 import com.spring.service.SkillServiceClass;
 
 @RestController
