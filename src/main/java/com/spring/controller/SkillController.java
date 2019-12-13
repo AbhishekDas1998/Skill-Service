@@ -67,5 +67,25 @@ public class SkillController {
 		ser.updateSkill(skill);
 		return "Skill updated with id "+skill.getsId();
 	}
+	
+	
+/*	@PostMapping(path = "/addSkillsEmployee")
+	public ResponseEntity<SkillsEmployee> addSkillsEmployee(@Valid @RequestBody SkillsEmployee skill) throws Exception {
+		SkillsEmployee savedSkills = ser.saveSkillsEmployee(skill);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{sId}")
+				.buildAndExpand(savedSkills.getsId()).toUri();
+		return ResponseEntity.created(location).build();
+	}
+	
+	@GetMapping(path = "/getSkillEmployee/{eId}")
+	public SkillsEmployee findOneSkillEmployee(@PathVariable int eId) {
+		SkillsEmployee skill = ser.findOneSkillEmployee(eId);
+		String p=Integer.toString(skill.geteId());
+		if (p.isEmpty())
+			throw new SkillNotFoundException("Employee with skill not found with eId =" + eId);
+		else
+			return skill;
+
+	}*/
 
 }
