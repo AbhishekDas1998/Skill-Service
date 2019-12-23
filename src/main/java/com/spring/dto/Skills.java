@@ -2,10 +2,17 @@ package com.spring.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+/**
+ * @author Abhishek.Das
+ *
+ */
 @Entity
 @Table(name = "Skills")
+@NamedQuery(name="Skills.findSkillsByName",query="SELECT s FROM Skills s WHERE s.sName = :sName")
 public class Skills {
 
 	@Id
@@ -30,6 +37,11 @@ public class Skills {
 
 	public void setsName(String sName) {
 		this.sName = sName;
+	}
+
+	@Override
+	public String toString() {
+		return "Skills [sId=" + sId + ", sName=" + sName + "]";
 	}
 
 	
