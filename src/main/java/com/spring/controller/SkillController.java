@@ -43,49 +43,28 @@ public class SkillController {
 
 	@GetMapping(path = "/getSkill/{sId}")
 	public Skills findOneSkill(@PathVariable int sId) {
-		Skills skill = ser.findOneSkill(sId);
-		if (skill.getsId() == 0)
-			throw new SkillNotFoundException("Skill Not found with sId =" + sId);
-		else
-			return skill;
+		return ser.findOneSkill(sId);
+
+	}
+
+	@GetMapping(path = "/getSkillbyName/{sName}")
+	public Skills findOneSkillbyName(@PathVariable String sName) {
+		return ser.findSkillsByName(sName);
 
 	}
 
 	@DeleteMapping(path = "/deleteSkill/{sId}")
 	public String deleteSkill(@PathVariable int sId) {
-		Skills skill = ser.findOneSkill(sId);
-		if (skill.getsId() == 0) {
-			throw new SkillNotFoundException("Skill Not found with sId =" + sId);
-		} else {
-			ser.deleteSkill(sId);
-			return "Skill deleted with sId "+sId;
-		}
+		ser.deleteSkill(sId);
+		return "Skill deleted with sId " + sId;
+		
 	}
 
 	@PutMapping(path = "/updateSkill")
 	public String updateSkill(@RequestBody Skills skill) {
 		ser.updateSkill(skill);
-		return "Skill updated with id "+skill.getsId();
+		return "Skill updated with id " + skill.getsId();
 	}
-	
-	
-/*	@PostMapping(path = "/addSkillsEmployee")
-	public ResponseEntity<SkillsEmployee> addSkillsEmployee(@Valid @RequestBody SkillsEmployee skill) throws Exception {
-		SkillsEmployee savedSkills = ser.saveSkillsEmployee(skill);
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{sId}")
-				.buildAndExpand(savedSkills.getsId()).toUri();
-		return ResponseEntity.created(location).build();
-	}
-	
-	@GetMapping(path = "/getSkillEmployee/{eId}")
-	public SkillsEmployee findOneSkillEmployee(@PathVariable int eId) {
-		SkillsEmployee skill = ser.findOneSkillEmployee(eId);
-		String p=Integer.toString(skill.geteId());
-		if (p.isEmpty())
-			throw new SkillNotFoundException("Employee with skill not found with eId =" + eId);
-		else
-			return skill;
 
-	}*/
-
+	
 }
