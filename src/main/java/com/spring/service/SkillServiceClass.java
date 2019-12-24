@@ -49,6 +49,9 @@ public class SkillServiceClass {
 		if (skillOptional.isPresent()) {
 		repo.deleteById(sId);
 		}
+		else {
+			throw new SkillNotFoundException("Skill Not found with id= "+sId);
+		}
 	}
 
 	public Skills updateSkill(Skills skill) {
