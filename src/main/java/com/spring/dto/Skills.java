@@ -2,7 +2,6 @@ package com.spring.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
